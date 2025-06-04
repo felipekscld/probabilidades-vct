@@ -1,0 +1,31 @@
+# arquivo .json transformado em .parquet
+caminhos_campeonato.json
+
+# cache python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# checkpoints do jupyter
+.ipynb_checkpoints
+
+# logs e temp
+*.log
+*.tmp
+
+# configs ide
+.vscode/
+*.code-workspace
+
+# cache ide
+.streamlit/
+
+# dados intermediários
+!caminhos.parquet
+!elo_final_campeonato.csv
+*.parquet
+*.csv
+
+# variáveis ambiente
+.env
