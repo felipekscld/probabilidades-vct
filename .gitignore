@@ -22,10 +22,10 @@ __pycache__/
 .streamlit/
 
 # dados intermediários
-!caminhos.parquet
-!elo_final_campeonato.csv
 *.parquet
 *.csv
+!caminhos.parquet
+!elo_final_campeonato.csv
 
 # variáveis ambiente
 .env
