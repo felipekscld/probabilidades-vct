@@ -2,7 +2,6 @@
 
 Análise de probabilidade baseada em elo calculado dos playoffs do Masters Toronto 2025, com caminhos possíveis visualizados e simulação manual.
 
-
 ---
 
 ## Funções
@@ -32,7 +31,7 @@ Análise de probabilidade baseada em elo calculado dos playoffs do Masters Toron
 <p align="center">
 <img src="img/bracket.png" width="650">
 </p>
-
+<p align="center"><em>^ exemplo de cenário gerado, é possível visualizar todos</em></p>
 
 ---
 
@@ -69,7 +68,7 @@ streamlit run src/app.py
 |---------------------------------------------------|---------------------------------------------------------------------------|
 | `elo_final_campeonato.csv`                        | Elo final de cada time, gerado por `calculo_elo_completo.py`             |
 | `caminhos.parquet`                                | Todos os caminhos Upper/Lower com probabilidade cumulativa (393,216)              |
-| `tabela_partidas.csv`           | registro de partidas das equipes com resultado, número de rodadas e mapas                            |
+| `tabela_partidas_vlr.csv`           | registro de partidas das equipes com resultado, número de rodadas e mapas                            |
 
 ---
 
