@@ -22,6 +22,33 @@ Além de seu caráter exploratório e interativo, o projeto visa demonstrar a ap
 
 ---
 
+## Cálculo de elo (força relativa)
+
+O cálculo de probabilidades foi baseado na fórmula clássica de elo, ajustada para refletir a diferença de rounds entre os times.
+
+### Fórmula de atualização do rating
+```
+R' = R + K × (S - E)
+```
+**Em que:**
+
+- `R` = rating atual do time  
+- `K` = fator de ajuste (K-factor)  
+- `S` = resultado real (1 = vitória, 0 = derrota)  
+- `E` = expectativa de vitória, calculada por:
+```
+E = 1 / (1 + 10^((Rb - Ra) / 400))
+```
+
+### Ajustes específicos
+
+- O **K-factor** foi definido como `32`, com incremento proporcional à diferença de rounds entre os times. Vitórias muito dominantes (ex: 13x1) resultam em ajustes de Elo mais significativos.
+- Jogos decididos por margem mínima (ex: 13x11) têm impacto reduzido, refletindo maior equilíbrio entre os times.
+
+Essa abordagem torna a simulação mais realista ao capturar variáveis no desempenho além de vitória/derrota.
+
+---
+
 ## Funções
 
 ### Simulador manual  
@@ -36,7 +63,7 @@ Além de seu caráter exploratório e interativo, o projeto visa demonstrar a ap
 
 ---
 
-### Caminhos e Bracket  
+### Caminhos e Bracket
 - Lista de todos os cenários possíveis do campeonato (393,216)
 - **Filtros:** equipe campeã, mais/menos provável geral, ordenação de mais/menos provável específico e quantidade de cenários mostrados.
 - Visualização da chave Upper/Lower do campeonato com logos e percentuais (para cada caminho)
@@ -63,51 +90,6 @@ Além de seu caráter exploratório e interativo, o projeto visa demonstrar a ap
 </p>
 
 ---
-
-## Como rodar localmente
-### Requisitos: python 3.9+
-
-Clone o repositório
-```bash
-git clone https://github.com/felipekscld/probabilidades-vct.git
-cd probabilidades-vct 
-```
-Instale as dependências
-```bash
-pip install -r requirements.txt
-```
-Execute o Streamlit
-```bash
-streamlit run src/app.py
-```
----
-## Cálculo de elo (força relativa)
-
-O cálculo de probabilidades foi baseado na fórmula clássica de elo, ajustada para refletir a diferença de rounds entre os times.
-
-### Fórmula de atualização do rating
-```
-R' = R + K × (S - E)
-```
-**Em que:**
-
-- `R` = rating atual do time  
-- `K` = fator de ajuste (K-factor)  
-- `S` = resultado real (1 = vitória, 0 = derrota)  
-- `E` = expectativa de vitória, calculada por:
-```
-E = 1 / (1 + 10^((Rb - Ra) / 400))
-```
-
-### Ajustes específicos
-
-- O **K-factor** foi definido como `32`, com incremento proporcional à diferença de rounds entre os times. Vitórias muito dominantes (ex: 13x1) resultam em ajustes de Elo mais significativos.
-- Jogos decididos por margem mínima (ex: 13x11) têm impacto reduzido, refletindo maior equilíbrio entre os times.
-
-Essa abordagem torna a simulação mais realista ao capturar variáveis no desempenho além de vitória/derrota.
-
-
----
 ## 🗃️ Fontes de dados
 | Arquivo                                           | Descrição                                                                 |
 |---------------------------------------------------|---------------------------------------------------------------------------|
@@ -116,8 +98,7 @@ Essa abordagem torna a simulação mais realista ao capturar variáveis no desem
 | `tabela_partidas_vlr.csv`           | registro de partidas das equipes com resultado, número de rodadas e mapas                            |
 
 ---
-
-## ⚙️ Scripts Auxiliares
+## ⚙️ Scripts auxiliares
 
 Abaixo estão os scripts que compõem o backend do projeto. Todos podem ser executados individualmente para testes ou geração de dados:
 
@@ -156,8 +137,24 @@ Executa **simulações Monte Carlo** de todas as permutações iniciais possíve
 - **Requer:** `elo_final_campeonato.csv`
 - **Gera:** estrutura interna usada para gráficos no Streamlit
 
+---
 
+## Como rodar localmente
+### Requisitos: python 3.9+
 
+Clone o repositório
+```bash
+git clone https://github.com/felipekscld/probabilidades-vct.git
+cd probabilidades-vct 
+```
+Instale as dependências
+```bash
+pip install -r requirements.txt
+```
+Execute o Streamlit
+```bash
+streamlit run src/app.py
+```
 ---
 
 ## 🗂️ Estrutura do projeto
