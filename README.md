@@ -66,6 +66,47 @@ streamlit run src/app.py
 | `caminhos.parquet`                                | Todos os caminhos Upper/Lower com probabilidade cumulativa (393,216)              |
 | `tabela_partidas.csv`           | registro de partidas das equipes com resultado, número de rodadas e mapas                            |
 
+---
+
+## ⚙️ Scripts Auxiliares
+
+Abaixo estão os scripts que compõem o backend do projeto. Todos podem ser executados individualmente para testes ou geração de dados:
+
+### `calculo_elo_completo.py`
+Realiza o cálculo do **ELO atualizado** de cada time com base nos resultados recentes (incluindo diferença de rounds). Gera o arquivo `elo_final_campeonato.csv` que serve como base para todas as simulações posteriores.
+
+- **Entrada:** tabela de partidas (`tabela_partidas_vlr.csv`)
+- **Saída:** arquivo `elo_final_campeonato.csv`
+
+---
+
+### `converter_json_para_parquet.py`
+Converte o arquivo de caminhos gerado (`caminhos_campeonato.json`) para o formato **Parquet**, otimizando a leitura no Streamlit.
+
+- **Entrada:** `caminhos_campeonato.json`
+- **Saída:** `caminhos.parquet`
+
+---
+
+### `simulador_caminhos.py`
+Simula **todos os caminhos possíveis** de um campeonato *double elimination* com base nas probabilidades Elo. Armazena o resultado em JSON, permitindo visualizações futuras.
+
+- **Requer:** `elo_final_campeonato.csv`
+- **Gera:** `caminhos_campeonato.json`
+
+---
+
+### `simulador_campeonato.py`
+Contém a **lógica recursiva principal** para simulação de confrontos, probabilidades e avanço nas chaves (Upper e Lower), gera a porcentagem de vezes que cada time ganhou em uma simulação de x campeonatos.
+
+---
+
+### `simulador_fases_grafico.py`
+Executa **simulações Monte Carlo** de todas as permutações iniciais possíveis e calcula a probabilidade de cada time atingir fases específicas: **semifinal, final e título**.
+
+- **Requer:** `elo_final_campeonato.csv`
+- **Gera:** estrutura interna usada para gráficos no Streamlit
+
 
 
 ---
