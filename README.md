@@ -59,7 +59,7 @@ Execute o Streamlit
 streamlit run src/app.py
 ```
 ---
-## 🗂️ Fontes de dados
+## 🗃️ Fontes de dados
 | Arquivo                                           | Descrição                                                                 |
 |---------------------------------------------------|---------------------------------------------------------------------------|
 | `elo_final_campeonato.csv`                        | Elo final de cada time, gerado por `calculo_elo_completo.py`             |
