@@ -34,7 +34,7 @@ def calcular_delta_rounds(row):
 times_campeonato = ['G2', 'XLG', 'FNC', 'RRQ', 'SEN', 'MIBR', 'PRX', 'TH']
 
 # Ler arquivo CSV
-df = pd.read_csv("modelo_partidas_vlrgg_bo5_exemplo.csv")
+df = pd.read_csv("data/modelo_partidas_vlrgg_bo5_exemplo.csv")
 df['data'] = pd.to_datetime(df['data'], errors='coerce')
 df = df.dropna(subset=['data'])
 df = df.sort_values('data')
