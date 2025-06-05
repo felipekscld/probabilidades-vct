@@ -24,7 +24,7 @@ BOX_W, BOX_H = 2.6, 1.5
 GAP_X, DY    = 0.28, 0.40
 ZOOM         = 0.08
 
-# ──────────────── Dados de Elo (para probabilidades) ─────────
+# ──────────────── Dados de elo (para probabilidades) ─────────
 df_elo = pd.read_csv(ELO_CSV)
 elos   = dict(zip(df_elo["time"], df_elo["elo_final"]))
 
@@ -56,7 +56,7 @@ PHASE_LABELS = {
     for lbl, mid in PHASE_TO_TOP.items()
 }
 
-# ────────────── Nomes legíveis das partidas ──────────────────
+# ────────────── Nomes das partidas ──────────────────
 PHASE_DISPLAY = {
     "U1": "Upper Quarterfinal 1",
     "U2": "Upper Quarterfinal 2",
@@ -103,13 +103,13 @@ def parse_path(lines):
     return d
 
 def resolve_choice(src, wins, losses):
-    if src in elos:                   # é time fixo
+    if src in elos:                   
         return src
-    tag, mid = src[0], src[2:-1]      # W(U1) → W , U1
+    tag, mid = src[0], src[2:-1]      
     table = wins if tag=="W" else losses
     return table.get(mid)
 
-# ─────────────── Utilitário de rebuild após Undo ─────────────
+# ─────────────── Utilitário de rebuild após undo ─────────────
 def rebuild_from_choices(choices: dict, agenda: list):
     winners, losers = {}, {}
     prob = 1.0
@@ -118,7 +118,7 @@ def rebuild_from_choices(choices: dict, agenda: list):
             continue
         a = resolve_choice(A, winners, losers)
         b = resolve_choice(B, winners, losers)
-        if not (a and b):  # dependência não resolvida
+        if not (a and b):  
             break
         vencedor           = choices[mid]
         perdedor           = b if vencedor == a else a

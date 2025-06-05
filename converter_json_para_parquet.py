@@ -18,7 +18,7 @@ def extrai_times(lista_jogos):
     for jogo in lista_jogos:
         m = TEAM_RE.search(jogo)
         if m:
-            s.update(m.groups())        # adiciona time A e B
+            s.update(m.groups())        
     return list(s)
 
 print("Processando…")
