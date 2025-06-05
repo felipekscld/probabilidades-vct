@@ -4,7 +4,7 @@ Análise de probabilidade baseada em elo calculado dos playoffs do Masters Toron
 ---
 ## Objetivos do projeto
 
-O projeto tem como finalidade o desenvolvimento de um sistema de simulação probabilística dos playoffs do campeonato Valorant Masters Toronto 2025 (que começa dia 07/07), com base em modelos estatísticos fundamentados no rating Elo, ajustado pela diferença de rounds e resultado de partidas passadas de 8 times.
+O projeto tem como finalidade o desenvolvimento de um sistema de simulação probabilística dos playoffs do campeonato Valorant Masters Toronto 2025 (que começa dia 07/07), baseado em modelos estatísticos com rating elo ajustado pela diferença de rounds e pelos resultados recentes das 8 equipes participantes.
 A partir desse sistema, foi criada uma interface interativa com todos esses cenários, e a possibilidade de simulação manual do campeonato.
 
 Além de seu caráter exploratório e interativo, o projeto visa demonstrar a aplicação prática de técnicas de modelagem probabilística, simulação computacional e visualização de dados.
