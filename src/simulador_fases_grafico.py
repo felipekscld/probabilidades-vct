@@ -53,7 +53,7 @@ def simular_bracket_com_fases(adversarios):
 
 sim_por_perm = 10000
 
-df_elo = pd.read_csv("elo_final_campeonato.csv")
+df_elo = pd.read_csv("data/elo_final_campeonato.csv")
 elos = dict(zip(df_elo['time'], df_elo['elo_final']))
 times_ordenados = df_elo.sort_values(by='elo_final', ascending=False)['time'].tolist()
 

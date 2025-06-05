@@ -44,7 +44,7 @@ def simular_bracket_restrito(adversarios):
 sim_por_bracket = 10000
 
 # Carregar ELO do .csv
-df_elo = pd.read_csv("elo_final_campeonato.csv")
+df_elo = pd.read_csv("data/elo_final_campeonato.csv")
 elos = dict(zip(df_elo['time'], df_elo['elo_final']))
 
 # Definir cabeças fixos e permutar os outros
