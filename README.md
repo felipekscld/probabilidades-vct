@@ -29,6 +29,11 @@ Análise de probabilidade baseada em elo calculado dos playoffs do Masters Toron
   <img src="img/caminhos.png" width="650">
 </p>
 
+<p align="center">
+<img src="img/bracket.png" width="650">
+</p>
+
+
 ---
 
 ### Estatísticas por fase  
