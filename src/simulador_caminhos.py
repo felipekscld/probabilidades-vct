@@ -1,6 +1,6 @@
 """
 Simula todos os caminhos válidos (double-elim, 8 equipes)
-Gera: caminhos_campeonato_ok.json
+Gera: caminhos_campeonato.json
 """
 
 from __future__ import annotations
@@ -117,7 +117,7 @@ for perm in permut:
             pilha.extend(expandir(est, agenda))
 
 # ── 9. Salva JSON ─────────────────────────────────────────────
-with open("caminhos_campeonato_ok.json","w",encoding="utf-8") as fp:
+with open("caminhos_campeonato.json","w",encoding="utf-8") as fp:
     json.dump(resultados, fp, ensure_ascii=False, indent=2)
 
 print("Total de caminhos válidos:", len(resultados))

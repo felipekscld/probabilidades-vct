@@ -93,5 +93,5 @@ elo_final = pd.DataFrame(
 ).sort_values(by='elo_final', ascending=False)
 
 # Salvar resultado
-elo_final.to_csv("elo_final_campeonato.csv", index=False)
+elo_final.to_csv("data/elo_final_campeonato.csv", index=False)
 print(elo_final)
