@@ -3,6 +3,24 @@
 Análise de probabilidade baseada em elo calculado dos playoffs do Masters Toronto 2025, com caminhos possíveis visualizados e simulação manual.
 
 ---
+## Objetivos do projeto
+
+O projeto tem como finalidade o desenvolvimento de um sistema de simulação probabilística dos playoffs do campeonato Valorant Masters Toronto 2025 (que começa dia 07/07), com base em modelos estatísticos fundamentados no rating Elo, ajustado pela diferença de rounds e resultado de partidas passadas de 8 times.
+A partir desse sistema, foi criado uma interface interativa com todos esses cenários, e a possibilidade de simulação manual do campeonato.
+
+Além de seu caráter exploratório e interativo, o projeto visa demonstrar a aplicação prática de técnicas de modelagem probabilística, simulação computacional e visualização de dados.
+
+### Etapas do desenvolvimento
+
+1. **Coleta de dados**: foi realizada a obtenção de resultados de partidas recentes das 8 equipes classificadas, com detalhamento por mapas, placares e número de rounds.
+2. **Criação da tabela de partidas**: os dados foram organizados em um formato tabular padronizado, permitindo o cálculo de métricas consistentes entre os confrontos.
+3. **Cálculo do elo ajustado**: desenvolveu-se um script de cálculo de rating (elo) que incorpora a diferença de rounds como fator de ajuste, proporcionando uma estimativa mais precisa da força relativa entre equipes.
+4. **Simulação de cenários**: a partir dos ratings obtidos, foram simulados todos os caminhos possíveis de um torneio em formato *double elimination*, com estimativa da probabilidade cumulativa de cada cenário.
+5. **Simulação Monte Carlo por fase**: para cada permutação de confrontos iniciais, foi aplicada uma simulação com 2.000 execuções a fim de estimar as chances de cada equipe alcançar semifinal, final e título.
+6. **Construção da interface interativa (Streamlit)**: o sistema foi implementado em uma interface que permite tanto a simulação manual (tipo "pick’em") quanto a visualização gráfica automatizada dos cenários e estatísticas.
+7. **Exportação e visualização**: foram incluídas funcionalidades de exportação em PNG e PDF, além da incorporação de tooltips explicativos e filtros dinâmicos para exploração dos dados.
+
+---
 
 ## Funções
 
@@ -63,6 +81,33 @@ Execute o Streamlit
 streamlit run src/app.py
 ```
 ---
+## Cálculo de elo (força relativa)
+
+O cálculo de probabilidades foi baseado na fórmula clássica de elo, ajustada para refletir a diferença de rounds entre os times.
+
+### Fórmula de atualização do rating
+```
+R' = R + K × (S - E)
+```
+**Em que:**
+
+- `R` = rating atual do time  
+- `K` = fator de ajuste (K-factor)  
+- `S` = resultado real (1 = vitória, 0 = derrota)  
+- `E` = expectativa de vitória, calculada por:
+```
+E = 1 / (1 + 10^((Rb - Ra) / 400))
+```
+
+### Ajustes específicos
+
+- O **K-factor** foi definido como `32`, com incremento proporcional à diferença de rounds entre os times. Vitórias muito dominantes (ex: 13x1) resultam em ajustes de Elo mais significativos.
+- Jogos decididos por margem mínima (ex: 13x11) têm impacto reduzido, refletindo maior equilíbrio entre os times.
+
+Essa abordagem torna a simulação mais realista ao capturar variáveis no desempenho além de vitória/derrota.
+
+
+---
 ## 🗃️ Fontes de dados
 | Arquivo                                           | Descrição                                                                 |
 |---------------------------------------------------|---------------------------------------------------------------------------|
@@ -93,7 +138,7 @@ Converte o arquivo de caminhos gerado (`caminhos_campeonato.json`) para o format
 ---
 
 ### `simulador_caminhos.py`
-Simula **todos os caminhos possíveis** de um campeonato *double elimination* com base nas probabilidades Elo. Armazena o resultado em JSON, permitindo visualizações futuras.
+Simula **todos os caminhos possíveis** do campeonato baseado no elo calculado. Armazena o resultado em JSON, permitindo visualizações futuras.
 
 - **Requer:** `elo_final_campeonato.csv`
 - **Gera:** `caminhos_campeonato.json`
