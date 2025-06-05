@@ -1,7 +1,7 @@
 # Simulação de campeonato VCT (probabilidades)
 Análise de probabilidade baseada em elo calculado dos playoffs do Masters Toronto 2025, com caminhos possíveis visualizados e simulação manual.
 
----
+**[https://probabilidades-vct.streamlit.app/](https://probabilidades-vct.streamlit.app/)** 
 ## Objetivos do projeto
 
 O projeto tem como finalidade o desenvolvimento de um sistema de simulação probabilística dos playoffs do campeonato Valorant Masters Toronto 2025 (que começa dia 07/07), baseado em modelos estatísticos com rating elo ajustado pela diferença de rounds e pelos resultados recentes das 8 equipes participantes.
