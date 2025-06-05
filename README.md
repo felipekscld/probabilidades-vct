@@ -41,19 +41,34 @@ Análise de probabilidade baseada em elo calculado dos playoffs do Masters Toron
 </p>
 
 ---
+
 ## Como rodar localmente
-**requer Python 3.9+**
+### Requisitos: python 3.9+
 
-# 1) clone
+Clone o repositório
+```bash
 git clone https://github.com/felipekscld/probabilidades-vct.git
-cd probabilidades-vct
-
-# 2) instale dependências
+cd probabilidades-vct 
+```
+Instale as dependências
+```bash
 pip install -r requirements.txt
-
-# 3) execute o app
+```
+Execute o Streamlit
+```bash
 streamlit run src/app.py
+```
+---
+## 🗂️ Fontes de dados
+| Arquivo                                           | Descrição                                                                 |
+|---------------------------------------------------|---------------------------------------------------------------------------|
+| `elo_final_campeonato.csv`                        | Elo final de cada time, gerado por `calculo_elo_completo.py`             |
+| `caminhos.parquet`                                | Todos os caminhos Upper/Lower com probabilidade cumulativa (393,216)              |
+| `tabela_partidas.csv`           | registro de partidas das equipes com resultado, número de rodadas e mapas                            |
 
+
+
+---
 
 ## 🗂️ Estrutura do projeto
 
@@ -77,5 +92,6 @@ streamlit run src/app.py
 ├── LICENSE
 └── README.md
 ```
+
 # Licença
 [Licença MIT](LICENSE)
