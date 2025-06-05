@@ -6,9 +6,9 @@ from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 from matplotlib.patches import Rectangle
 
 # ───────────────────── Arquivos de dados ─────────────────────
-PARQUET = "caminhos.parquet"
+PARQUET = "data/caminhos.parquet"
 LOGOS   = "logos"
-ELO_CSV = "elo_final_campeonato.csv"
+ELO_CSV = "data/elo_final_campeonato.csv"
 
 # ─────────────────── Função load_data ────────────────────────
 @st.cache_resource
